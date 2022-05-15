@@ -34,6 +34,16 @@ print("To quit application please type 'Q' or 'q'")"""
 Play = input("Press Enter to start a game")
 BINGO = "Winner"
 
+# Player_1 = input("Insert player name :") UNCOMMENT ME !!!!!!
+
+# Player_2 = input("Insert player name :") UNCOMMENT ME !!!!!!
+
+print("---------------------------------")
+
+# print("Player One  :" + Player_1) UNCOMMENT ME !!!!!!
+
+print()
+
 board = random.sample(range(0, 50), 5)
 board1 = random.sample(range(0, 50), 5)
 board2 = random.sample(range(0, 50), 5)
@@ -45,13 +55,51 @@ print(board2)
 print(board3)
 print(board4)
 
+print()
+
+print("-----------------------------------")
+
+# print("Player Two  :" + Player_2) UNCOMMENT ME !!!!!!
+
+print()
+
+board6 = random.sample(range(0, 50), 5)
+board7 = random.sample(range(0, 50), 5)
+board8 = random.sample(range(0, 50), 5)
+board9 = random.sample(range(0, 50), 5)
+board10 = random.sample(range(0, 50), 5)
+print(board6)
+if board6 == "num":
+
+print(board7)
+print(board8)
+print(board9)
+print(board10)
+
+print()
+
+input("You're numbers are ! ")
+
+print("----------------------------------")
+
 if "BINGO" == BINGO:
     print("BINGO!")
     print("WELL DONE")
     input("To play again type 'R' or 'r'")
-
+A = False
 while True:
-    Enter = input("Press Enter to start or BINGO:")
     num = random.randint(0, 50)
-    print(num)
+    num1 = random.randint(0, 50)
+    num2 = random.randint(0, 50)
+    num3 = random.randint(0, 50)
+    num4 = random.randint(0, 50)
+    num5 = random.randint(0, 50)
+    num6 = random.randint(0, 50)
+    num7 = random.randint(0, 50)
+    num8 = random.randint(0, 50)
+    num9 = random.randint(0, 50)
+    numA = random.randint(0, 50)
+    numB = random.randint(0, 50)
 
+    print(num, + num1, num2, + num3, num4, + num5, num6, + num7, num8, + num9, numA, + numB)
+    input("Press enter to continue or type 'B'  or  'b' for Bingo")
