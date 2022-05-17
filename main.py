@@ -1,5 +1,7 @@
-
 import random
+
+import numpy
+
 '''
 """Welcome = input("Welcome to My Bingo game, Press enter to continue!:")
 print()
@@ -29,7 +31,7 @@ Enter = input("Press Enter to start a game")
 print()
 print("To quit application please type 'Q' or 'q'")
 '''
-
+'''
 Play = input("Press Enter to start a game")
 BINGO = "Winner"
 
@@ -41,21 +43,28 @@ print("---------------------------------")
 
 #print("Player One  :" + Player_1)
 restart = "Press enter to continue or type 'B'  or  'b' for Bingo"
-print()
+print()'''
+
+
+thisdict = {
+  "B":
+}
+thisdict.pop("model")
+print(thisdict)
 
 # Below will be the game the random number generator
 # Player one's board
-for item in arr:
-    board = random.sample(range(0, 50), 5)
-    board1 = random.sample(range(0, 50), 5)
-    board2 = random.sample(range(0, 50), 5)
-    board3 = random.sample(range(0, 50), 5)
-    board4 = random.sample(range(0, 50), 5)
-    print(board)
-    print(board1)
-    print(board2)
-    print(board3)
-    print(board4)
+
+board = random.sample(range(0, 80), 5)
+board1 = random.sample(range(0, 80), 5)
+board2 = random.sample(range(0, 80), 5)
+board3 = random.sample(range(0, 80), 5)
+board4 = random.sample(range(0, 80), 5)
+print(board)
+print(board1)
+print(board2)
+print(board3)
+print(board4)
 
 print()
 
@@ -65,11 +74,12 @@ print("-----------------------------------")
 
 print()
 # Player two's board
-board6 = random.sample(range(0, 50), 5)
-board7 = random.sample(range(0, 50), 5)
-board8 = random.sample(range(0, 50), 5)
-board9 = random.sample(range(0, 50), 5)
-board10 = random.sample(range(0, 50), 5)
+game_board = board, board1, board2, board3, board4
+board6 = random.sample(range(0, 80), 5)
+board7 = random.sample(range(0, 80), 5)
+board8 = random.sample(range(0, 80), 5)
+board9 = random.sample(range(0, 80), 5)
+board10 = random.sample(range(0, 80), 5)
 print(board6)
 print(board7)
 print(board8)
@@ -78,28 +88,55 @@ print(board10)
 
 print()
 
-input("You're numbers are ! ")
-
 print("----------------------------------")
 
+print("You're numbers are ! ")
+print("Press enter to continue or type 'B'  or  'b' for Bingo")
+'''
 if "BINGO" == BINGO:
     print("BINGO!")
     print("WELL DONE")
     input("To play again type 'R' or 'r'")
-while True:
-    num = random.randint(0, 50)
-    num1 = random.randint(0, 50)
-    num2 = random.randint(0, 50)
-    num3 = random.randint(0, 50)
-    num4 = random.randint(0, 50)
-    num5 = random.randint(0, 50)
-    num6 = random.randint(0, 50)
-    num7 = random.randint(0, 50)
-    num8 = random.randint(0, 50)
-    num9 = random.randint(0, 50)
-    numA = random.randint(0, 50)
-    numB = random.randint(0, 50)
+'''
+num = random.randint(0, 80)
+
+
+print(num)
+'''
+for i in range(5,):
+    for j in range(2):
+        print(board, board2, board3, board4, board1, end="")
+        for i in range(1):
+            for j in range(1):
+                print(board2, board3, board4, board1, end="")
+            for i in range(1):
+                for j in range(1):
+                    print(board3, board4, board1, end="")
+                print()
+    print()
+'''
+'''print(game_board)'''
+
+
+# check for vertical win
+'''for y in range(0, 5):
+    count = 0
+    for x in range(0, 5):
+        if board[y][x] != ' X':
+            break
+        else:
+            count += 1
+    if count == 5:
+    return True'''
+
+# Vertical bingo
+
+# Horizontal bingo
+
+# Diagonal
+
 
 # print(num, + num1, num2, + num3, num4, + num5, num6, + num7, num8, + num9, numA, + numB)
-    input(num, + num1, + restart)
 
+
+#Whatever number shows in print i want the bingo boards to mark out the current number
