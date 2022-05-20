@@ -1,31 +1,5 @@
 import random
 import copy
-"""I definatly had help from google/Youtube with this one as it was super hard for me"""
-"""
-Welcome = input("Welcome to My Bingo game, Press enter to continue!:")
-print()
-print("Please read terms and conditions before playing.")
-print()  # Since bingo is a form of gambling i thought i would add a terms and conditions.
-print("We here at M.B.G do not condone gambling By playing Bingo\nyou agree to be bound by these terms and "
-      "conditions but they do not\naffect your rights under the Consumer Rights Act 2015. ")
-print(
-    "You must be over 18\nyears of age to play My Bingo Game reserves the right to require all\nparticipants to prove "
-    "that they are over 18 by production of a\n recognised photographic identity document.")
-print()
-# Little login phase
-# Asks the user to enter their age
-AGE = int(input("Please enter your Age:"))
-if AGE > 17:  # If the age is over 17 then the user will be eligible if not then the programme will end
-    print("You are Eligible ")
-else:
-    print("Sorry you are not Eligible to play")
-    exit()
-
-Go = input("Press Enter to accept and continue:")
-print()
-print("Welcome to My Bingo Game")
-print()
-Enter = input("Press Enter to start a game")"""
 
 
 def clearScreen():
@@ -45,7 +19,6 @@ def generateBoard():
     board[2][2] = ' X'
     return board
 
-
 # checks board if contains num
 # Type in your number
 def inBoard(num, board):
@@ -54,53 +27,6 @@ def inBoard(num, board):
             if num == board[x][y]:
                 board[x][y] = ' X'
                 return True
-    return False
-
-
-# bool on if board meets win condition
-def didWin(board):
-    # check for horizontal win
-    for x in range(0, 5):
-        count = 0
-        for y in range(0, 5):
-            if board[y][x] != ' X':
-                break
-            else:
-                count += 1
-        if count == 5:
-            return True
-
-    # check for vertical win
-    for y in range(0, 5):
-        count = 0
-        for x in range(0, 5):
-            if board[y][x] != ' X':
-                break
-            else:
-                count += 1
-        if count == 5:
-            return True
-
-    # check for diagonal - top left to bottom right
-    count = 0
-    for i in range(0, 5):
-        if board[i][i] != ' X':
-            break
-        else:
-            count += 1
-    if count == 5:
-        return True
-
-    # check for diagonal - top right to bottom left
-    count = 0
-    for x in range(0, 5):
-        if board[4 - x][x] != ' X':
-            break
-        else:
-            count += 1
-    if count == 5:
-        return True
-
     return False
 
 
@@ -119,14 +45,30 @@ def printBoard(board, OG):
         print('   ' + ogStr)
 
 
-def draw(notDrawn):
-    num = notDrawn(range(1, 80))
+"""def draw(notDrawn):
+    num = notDrawn[random.randint(0, len(notDrawn) - 1)]
     notDrawn.remove(num)
-    #num = notDrawn[random.randint(0, len(notDrawn) - 1)]
-    #notDrawn.remove(num)
-    return num
+    return num"""
+
+def call(caller):
+    caller = input()
+    num = caller
+
+def didWin(board):
+
+    # check for horizontal win
+    for x in range(0, 5):
+        count = 0
+        for y in range(0, 5):
+            if board[y][x] != ' X':
+                break
+            else:
+                count += 1
+        if count == 5:
+            return True
+
 def playGame():
-    notDrawn = (range(1, 80))
+    notDrawn = list(range(1, 80))
     board1 = generateBoard()
     OG_BOARD1 = copy.deepcopy(board1)
 
@@ -136,7 +78,7 @@ def playGame():
     printBoard(board1, OG_BOARD1)
 
     while True:
-        userInput = input("Enter number :")
+        userInput = input()
         clearScreen()
         if userInput == 'q':
             print('Press Enter to Draw Number. Enter q, then press enter to quit.\n')
