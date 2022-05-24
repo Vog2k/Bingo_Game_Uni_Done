@@ -18,7 +18,7 @@ print()
 AGE = int(input("Please enter your Age:"))
 if AGE > 17:  # If the age is over 17 then the user will be eligible if not then the programme will end
     print()
-    print("You are Eligible ")
+    print("You are Eligible. ")
 else:
     print("Sorry you are not Eligible to play")
     exit()
