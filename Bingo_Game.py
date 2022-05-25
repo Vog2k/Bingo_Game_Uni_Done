@@ -1,7 +1,10 @@
-# BINGO Game By Timothy Leatau
+# BINGO Game
+# By Timothy Leatau
 
 import random
 import copy
+
+"i definitely needed help from google with this project "
 
 Welcome = input("Welcome to My Bingo game, Press enter to continue!:")
 print()
