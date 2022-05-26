@@ -3,44 +3,47 @@
 
 import random
 import copy
+import numpy
 
 "i definitely needed help from google with this project "
 
-Welcome = input("Welcome to My Bingo game, Press enter to continue!:")
-print()
-print("Please read terms and conditions before playing.")
-print()  # Since bingo is a form of gambling i thought i would add a terms and conditions.
-print("We here at M.B.G do not condone gambling By playing Bingo\nyou agree to be bound by these terms and "
-      "conditions but they do not\naffect your rights under the Consumer Rights Act 2015. ")
-print(
-    "You must be over 18\nyears of age to play My Bingo Game reserves the right to require all\nparticipants to prove "
-    "that they are over 18 by production of a\nrecognised photographic identity document.")
-print()
-# Little login phase
-# Asks the user to enter their age
-AGE = int(input("Please enter your Age:"))
-if AGE > 17:  # If the age is over 17 then the user will be eligible if not then the programme will end
-    print()
-    print("You are Eligible. ")
-else:
-    print("Sorry you are not Eligible to play")
-    exit()
 
-print()
-Go = input("Press Enter to accept and continue:")
-print()
-print("Welcome to My Bingo Game")
-print()
-print("The rules: The objective of the game is to match your drawn numbers with the numbers on you're board\n"
-      "once you have successfully matched five numbers in a row, In directions of either top to bottem,"
-      "left to right\nYou will achive Bingo and win a hi-5 from me "
-      "or even diagonally\n")
-Enter = input("Press Enter to start a game\n")
-print("Good luck!\n")
+def Start():
+    Welcome = input("Welcome to My Bingo game, Press enter to continue!:")
+    print()
+    print("Please read terms and conditions before playing.")
+    print()  # Since bingo is a form of gambling I thought I would add a terms and conditions.
+    print("We here at M.B.G do not condone gambling By playing Bingo\nyou agree to be bound by these terms and "
+          "conditions but they do not\naffect your rights under the Consumer Rights Act 2015. ")
+    print(
+        "You must be over 18\nyears of age to play My Bingo Game reserves the right to require all\nparticipants to prove "
+        "that they are over 18 by production of a\nrecognised photographic identity document.")
+    print()
+    # Little login phase
+    # Asks the user to enter their age
+    AGE = int(input("Please enter your Age:"))
+    if AGE > 17:  # If the age is over 17 then the user will be eligible if not then the programme will end
+        print()
+        print("You are Eligible. ")
+    else:
+        print("Sorry you are not Eligible to play")
+        exit()
+
+    print()
+    Go = input("Press Enter to accept and continue:")
+    print()
+    print("Welcome to My Bingo Game")
+    print()
+    print("The rules: The objective of the game is to match your drawn numbers with the numbers on you're board\n"
+          "once you have successfully matched five numbers in a row, In directions of either top to bottem,"
+          "left to right\nYou will achive Bingo and win a hi-5 from me "
+          "or even diagonally\n")
+    Enter = input("Press Enter to start a game\n")
+    print("Good luck!\n")
 
 
 # Escape sequence to clear screen
-def clearScreen():
+def Wipe():
     print(chr(27) + "[2J")
 
 
@@ -50,8 +53,8 @@ def clearScreen():
 def generateBoard():
     whitelist = list(range(1, 81))
     board = [list(), list(), list(), list(), list()]
-    for x in range(0, 5):
-        for y in range(0, 5):
+    for x in range(0, 5):  # Top to bottem
+        for y in range(0, 5):  # left to right
             i = random.randint(0, len(whitelist) - 1)
             num = whitelist[i]
             del whitelist[i]
@@ -140,17 +143,18 @@ def draw(notDrawn):
 
 
 def playGame():
+    Start()
     notDrawn = list(range(1, 81))
     board1 = generateBoard()
     OG_BOARD1 = copy.deepcopy(board1)
 
-    clearScreen()
+    Wipe()
 
     printBoard(board1, OG_BOARD1)
 
     while True:
         userInput = input
-        clearScreen()
+        Wipe()
         if userInput == 'q':
 
             printBoard(board1, OG_BOARD1)
@@ -158,31 +162,31 @@ def playGame():
             print("Thank you for playing !")
             exit()
         else:
-            curDraw = draw(notDrawn)
-            found = inBoard(curDraw, board1)
+            cur_draw = draw(notDrawn)
+            found = inBoard(cur_draw, board1)
 
             printBoard(board1, OG_BOARD1)
             if didWin(board1) == True:
                 while True:
-                    clearScreen()
+                    Wipe()
                     print('Winner! Enter "new" to start new game. Enter "q" to quit.\n')
                     printBoard(board1, OG_BOARD1)
                     print()
-                    print('BINGO!!! Congratulations you have won, Last drawn number' + str(curDraw))
+                    print('BINGO!!! Congratulations you have won, Last drawn number :' + str(cur_draw))
                     userInput = input()
                     if userInput == 'q':
                         print("Game Over")
-                        return False
+                        return False # User has won the game and has an option to start again or quit out
                     elif userInput == 'new':
                         return True
             else:
                 if found == True:
                     print()
-                    print("Found a match!\n\nYou're number is " + str(curDraw))
+                    print("Found a match!\n\nYou're number is " + str(cur_draw))
                     print()
-                else:
+                else:  # Determines if the played has a matched number
                     print()
-                    print("Bad draw. No Match.\n\nYou're number is " + str(curDraw))
+                    print("Next draw. No Match.\n\nYou're number is " + str(cur_draw))
                     print()
 
 
